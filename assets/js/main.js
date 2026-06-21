@@ -259,4 +259,46 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * WhatsApp Floating Button Injection
+   */
+  function initWhatsAppButton() {
+    if (document.querySelector('.whatsapp-float')) return;
+
+    const waLink = document.createElement('a');
+    waLink.href = 'https://wa.me/628xxxxx';
+    waLink.target = '_blank';
+    waLink.className = 'whatsapp-float';
+    waLink.setAttribute('aria-label', 'Hubungi kami via WhatsApp');
+    waLink.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.69-4.98c-.202-.101-1.194-.588-1.378-.654-.185-.066-.32-.1-.455.101-.136.2-.524.654-.643.791-.12.137-.24.154-.442.053-1.012-.505-1.71-1.025-2.385-2.185-.182-.311.182-.288.52-.962.068-.137.034-.258-.017-.36-.051-.1-.455-1.096-.622-1.5-.162-.39-.327-.336-.454-.336-.118-.006-.254-.006-.39-.006-.136 0-.356.051-.543.254-.187.203-.714.698-.714 1.7 0 1.005.731 1.977.833 2.112.102.135 1.437 2.2 3.483 3.084.488.21 1.01.34 1.393.461.507.162.968.139 1.332.085.407-.06 1.194-.488 1.36-.96.166-.472.166-.877.117-.96-.049-.084-.183-.135-.386-.236"/></svg>`;
+    document.body.appendChild(waLink);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWhatsAppButton);
+  } else {
+    initWhatsAppButton();
+  }
+
+  /**
+   * Intercept contact form submission and redirect to WhatsApp
+   */
+  document.addEventListener('submit', function (event) {
+    const form = event.target;
+    if (form && form.classList && form.classList.contains('php-email-form') && form.getAttribute('action') === 'forms/contact.php') {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      const name = form.querySelector('[name="name"]').value;
+      const email = form.querySelector('[name="email"]').value;
+      const subject = form.querySelector('[name="subject"]').value;
+      const message = form.querySelector('[name="message"]').value;
+
+      const text = `Halo GiftCraft,\n\nSaya ingin mengirimkan pesan:\nNama: ${name}\nEmail: ${email}\nSubjek: ${subject}\nPesan: ${message}`;
+      const waUrl = `https://wa.me/628xxxxx?text=${encodeURIComponent(text)}`;
+      window.open(waUrl, '_blank');
+    }
+  }, true);
+
 })();
