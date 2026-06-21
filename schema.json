@@ -1,0 +1,66 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://giftcraft.co.id/#organization",
+      "name": "GiftCraft",
+      "url": "https://giftcraft.co.id",
+      "logo": "https://giftcraft.co.id/assets/img/logo.webp",
+      "image": "https://giftcraft.co.id/assets/img/portfolio/bannerproduk.webp",
+      "telephone": "+622155557890",
+      "email": "hello@giftcraft.co.id",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Sudirman Kav. 52-53",
+        "addressLocality": "Jakarta Selatan",
+        "postalCode": "12190",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.224354,
+        "longitude": 106.809823
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/giftcraft",
+        "https://www.instagram.com/giftcraft",
+        "https://www.linkedin.com/company/giftcraft"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://giftcraft.co.id/#website",
+      "url": "https://giftcraft.co.id",
+      "name": "GiftCraft",
+      "publisher": {
+        "@id": "https://giftcraft.co.id/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://giftcraft.co.id/#webpage",
+      "url": "https://giftcraft.co.id",
+      "name": "GiftCraft - Souvenir Kantor & Corporate Gift Set Premium",
+      "isPartOf": {
+        "@id": "https://giftcraft.co.id/#website"
+      },
+      "about": {
+        "@id": "https://giftcraft.co.id/#organization"
+      },
+      "description": "GiftCraft adalah penyedia souvenir kantor premium dan corporate gift set eksklusif di Indonesia. Melayani pembuatan welcoming kit karyawan, agenda, tumbler, dan merchandise perusahaan dengan kelengkapan Faktur Pajak PPN 11%."
+    }
+  ]
+}
